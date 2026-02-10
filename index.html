@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hii ni kwaajili yako</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  height:100vh;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:"Dancing Script",cursive;
+  overflow:hidden;
+  position:relative;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* FLOWER RING BACKGROUND */
+.flower-ring{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:480px;
+  height:480px;
+  border-radius:50%;
+  animation:spin 35s linear infinite;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:0;
+}
+.flower-ring span{
+  position:absolute;
+  left:50%;
+  top:0;
+  transform-origin:0 240px;
+  font-size:30px;
+}
+@keyframes spin{
+  from{transform:rotate(0)}
+  to{transform:rotate(360deg)}
+}
+
+/* INTRO */
+#intro{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:absolute;
+  inset:0;
+  z-index:2;
+}
+.intro-card{
+  background:rgba(255,255,255,0.97);
+  padding:42px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 20px 45px rgba(0,0,0,.35);
+}
+.intro-card h1{
+  font-family:"Great Vibes",cursive;
+  font-size:52px;
+  color:#9e0030;
+}
+.intro-card p{
+  font-size:26px;
+  color:#6b0f2c;
+  line-height:1.9;
+}
+.intro-card button{
+  padding:16px 34px;
+  font-size:22px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff2e63,#ff6f91);
+  color:white;
+}
+
+/* LOCK */
+#lock{
+  background:rgba(255,255,255,0.97);
+  padding:34px;
+  border-radius:30px;
+  width:90%;
+  max-width:380px;
+  text-align:center;
+  box-shadow:0 20px 45px rgba(0,0,0,.35);
+  display:none;
+  z-index:2;
+}
+#lock h2{
+  font-family:"Great Vibes",cursive;
+  font-size:44px;
+  color:#9e0030;
+}
+#lock input{
+  width:100%;
+  padding:16px;
+  border-radius:16px;
+  font-size:22px;
+}
+#lock button{
+  margin-top:20px;
+  padding:16px;
+  width:100%;
+  font-size:22px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff2e63,#ff6f91);
+  color:white;
+}
+
+/* HEART */
+.heart{
+  width:180px;height:180px;
+  background:#ff2e63;
+  position:relative;
+  transform:rotate(-45deg);
+  animation:pulse 1.8s infinite;
+  display:none;
+}
+.heart::before,.heart::after{
+  content:"";
+  position:absolute;
+  width:180px;height:180px;
+  background:#ff2e63;
+  border-radius:50%;
+}
+.heart::before{top:-90px}
+.heart::after{left:90px}
+.heart-text{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transform:rotate(45deg);
+  color:white;
+  font-family:"Great Vibes",cursive;
+  font-size:38px;
+  text-align:center;
+}
+@keyframes pulse{
+  0%,100%{transform:rotate(-45deg) scale(1)}
+  50%{transform:rotate(-45deg) scale(1.15)}
+}
+
+/* OVERLAY */
+#overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+/* PAGE */
+.page{
+  background: linear-gradient(180deg, #ffffff, #fff5f8); /* rangi ya kitabu */
+  width: 95%;
+  max-width: 600px;
+  max-height: 80vh;
+  padding: 34px;
+  border-radius: 30px;
+  overflow-y: auto;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* mwonekano mzuri */
+}
+
+/* PAGE TITLE */
+.page h2{
+  font-family: "Arial", sans-serif; /* mwandiko wa kawaida */
+  font-size: 50px;
+  text-align: center;
+  color: #9e0030;
+  font-weight: bold; /* bold */
+  margin-bottom: 20px;
+}
+
+/* PAGE PARAGRAPH */
+.page p{
+  font-family: "Palatino Linotype", "Book Antiqua", "Georgia",serif; /* mwandiko wa kawaida */
+  font-size: 28px;
+  line-height: 2.5;
+  color: #5a0d26;
+  text-align: justify;
+  font-weight: bold; /* bold */
+  font-style: italic; /* italic */
+  letter-spacing: 0.5px; /* spacing kidogo kwa readability */
+}
+
+/* NAVIGATION BUTTONS */
+.nav{
+  position: absolute;
+  top: 50%;
+  width:30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 28px;
+  border: none;
+  background: linear-gradient(135deg,#ff2e63,#ff6f91);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50%);
+}
+.left { left: 12px; }
+.right { right: 12px; }
+
+/* CLOSE BUTTON */
+.cancil{
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg,#ff2e63,#ff6f91);
+  border-radius: 50%;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3">
+</audio>
+
+<div class="flower-ring" id="flowers"></div>
+
+<div id="intro">
+  <div class="intro-card">
+    <h1>🌸 Karibu 🌸</h1>
+    <p>Hapa kuna kumbukumbu maalum.<br>Fungua kwa utulivu wa moyo ❤️</p>
+    <button onclick="showLock()">Endelea ❤️</button>
+  </div>
+</div>
+
+<div id="lock">
+  <h2>Weka Password 💖</h2>
+  <input type="password" id="pass">
+  <button onclick="unlock()">Fungua</button>
+</div>
+
+<div id="overlay">
+  <div class="cancil" onclick="closeBook()">✖</div>
+  <button class="nav left" onclick="prev()">❮</button>
+  <div class="page" id="page"></div>
+  <button class="nav right" onclick="next()">❯</button>
+</div>
+
+<script>
+const PASSWORD="MARCO LOVE MARIAM";
+const lock=document.getElementById("lock");
+const intro=document.getElementById("intro");
+const overlay=document.getElementById("overlay");
+const page=document.getElementById("page");
+const music=document.getElementById("music");
+
+/* FLOWERS */
+const ring=document.getElementById("flowers");
+["🌹","🌸","🌺","💮","🌷"].forEach((f,i)=>{
+  for(let j=0;j<6;j++){
+    const s=document.createElement("span");
+    s.innerText=f;
+    s.style.transform=`rotate(${(i*6+j)*12}deg)`;
+    ring.appendChild(s);
+  }
+});
+
+/* MESSAGES — HAYA NDIO MANENO YAKO YOTE */
+const messages=[
+ {t:"💌 Ukurasa wa maelekezo",c:"🌺 Natumaini kua hujambo, ni siku njema leo kuwa na afya njema yafuatayo ni maelekezo mafupi tu  juu ya vitu utakavyokutana navyo kama ifuatavyo utagusa alama hapo kulia itakua mbele au kushoto itakua nyuma  pia alama ya X ni ya kurudisha mwanzo Pia ujumbe utakua mpaka chini mpaka ukutane na alama iliyopo chini ambayo ni ya ua , pia kuna jumla ya kurasa 9 sasa unaweza kuendelea kusoma kilichomo ndani karibu tuendelee mpendwa Mariam............🌺 "},
+ {t:"💌 Ukurasa 1",c:"🌺Ilianza kama kama ifuatavyo, Ni kuhusu safari ya mtu mmoja,Ilikua ni siku ya mkeha Somo lilifundishwa lilikua na kichwa kiitwacho: maisha ya ndoa ya ki Kristo, baada ya somo Mwenyekiti wake wa vijana akauliza swali kwenye mkesha wa maombi kua 'ni vigezo gani umeweka ili kumtambua mke sahihi kwenye maisha yako' akajibu “Hapana sijaweka chochote kwa sasa” akamuambia kua sasahivi ndiyo muda sahihi kwaajili ya kuomba na kuweka hivyo vigezo ili Mungu akikuonyesha unajua ni yupi sahihi................🌺 "},
+ {t:"✨ Ukurasa 2",c:"🌺Siku moja akaamua kufanya  maombi na kusema “atakaekuwa wa kwanza kupiga simu ndiye atakua huyo Mungu amemwandaa” Kuna binti mmoja akapiga wa kwanza simu lakini huyo mtu moyoni akasema haiwezekani Siku moja akapata likizo kurudi nyumbani, huyo binti akamtafuta akamuuliza kua unakuja lini akasema kwenye tarehe 19 ya mwezi wa saba akasema kua unajua nini kijana akamjibu ehe akasema kutakua na ubatizo jumaplili akasema ok..................🌺"},
+ {t:"💌 Ukurasa 3",c:"🌺Akapanga Kwenda ijumaa yake ndipo alipo fika nyumbani akakaa akaendelea na kuomba juu ya mtu sahihi Siku moja alipokua ibadani muhubiri akasema kuna watu hua wanaomba vitu wakiwa wamejiwekea majibu yao kichwani Mungu hatojibu hayo maombi akasema kumbe nazuia mombi mwenyewe Ndipo akaomba hivi “Mungu naomba mtu aliesahihi kwenye maisha yangu atakae niweka karibu na wewe na siyo mbali na wewe” gafla akasikia rohoni kua ni yule binti moyoni akasema haiwezikani siku moja ya Jumapili akasema Mungu kama huyo mtu yuko huku naomba unionyeshe nimjue halafu ibakie hivyo bila kumwambia chochote labda ajue mwenyewe kwa kumjulisha wewe na si mimi na kama hayupo huku nijue yuko wapi..............🌺"},
+ {t:"🌸 Ukurasa 4",c:"🌺Ilikua siku ya Jumapili moja alienda kwenye ibada akiwa kwenye maombi ya saa mbili asubuhi akaonyeshwa muonekano wa huyo binti akiwa kwenye mavazi aliyo yaona na muda mfupi tu huyo binti akatokea akiwa kwenye uleule muonekano yule kijana Akasema kama ni yeye mchungaji atasema kitu na kupita mimi nitamwabia huyo binti ikawa mhubiri akasema mwambie Jirani yako umependeza akamwambia ila binti alijibu kupendeza gani sasa, Huyo mtu akajikuta anapata amani na furaha kumjaua mtu aliye kwaajili yake Kesho yake alikua anasafiri kurudi chuo hakumwambia kitu chochote huyo binti na  baada ya kurudi chuo aka omba tena kama ndiye atapiga simu saa 12:--- asubuhi na ikawa hivyo na ndiyo uthibitisho wa mwingine kua ni yeye ndipo akajilidhisha..................🌺"},
+ {t:"✨ Ukurasa 5",c:"🌺Baada ya kurudi akakaa muda frani hivi binti akamuuliza swali kua kuna mtu alikua ni rafiki  yako ilikuaje kijana akamuelezea zaidi ilivyokua kwamba baada ya kukosa amani ya kuwa na rafiki kama yule alimuomba mungu amuondoe kwenye maisha yake, huyo rafiki siku moja akasema sitaki unitafute  tena maana naona kuna watu hawapendi akamuuliza sababu ni nini akasema acha tu iwe hivyo Ikawa alipomaliza kusema hivyo yule binti akamuuliza kwanini mimi ni nani yako kijana akasema kwakua hakutaka kumwambia kuhusu alichokiomba na alichojibiwa akasema ni rafiki uliyechaguliwa maana Mungu kakuchagua baada ya maombi binti akasema hivi kuna urafiki gani kati ya mvulana na msichana wakapotezea pia hiyo siku ilikua ni siku ya harusi ya kaka ake huyo kijana binti akasema baada ya kuniambia hivyo mwiliwangu mpaka umeishiwa nguvu najikuta nalia kwa nini mimi ndiye nimechaguliwa na si mwingine ......................🌺"},
+ {t:"🌸 Ukurasa 6",c:"🌺Siku moja binti akasema kuna vitu umenificha eti akasema Hapana sijaficha chochote badaye akasema nitakuambia 2028 ila baadaye huyo binti akamsisitiza sana kijana akasema naomba uniambie sitaki unifiche maana kilajambo alilokua anauliza llilikua linalenga huo mwaka akamsisitiza sana ndipo akaamua amwambie tu akamwambia kua nilikua naomba mtu sahihi kwenye maisha  yangu ndipo mungu akanionyesha wewe kwa Ishara mbalimbali zilizopo (kwenye kurasa zilizotangulia ulizo zisoma ) Ndipo huyo binti akaadhimu kuomba kivyake wakati hakua hata na mpango wa kuomba juu ya mtu wa kuungana nae kwenye maisha akaomba kuwa 'huyo mtu kaja kwangu kama nani' akajibiwa Ndipo siku moja akasema huyo binti kuna kitu nataka nikwambie ilikua ni usiku sana akasema itakavyokua na iwe utakavyonihisi na unihisi mimi nauliza akauliza “hivi  unanipenda” kijana akasema kwanini umeuliza hivyo akasema wewe nijibu usiniambie mpaka mwaka 2028 ndipo akamjibu baada ya kujiuliza sana kua nimwabie au niache ndipo akasema ndiyo nakupenda ikawa ni mwanzo mpa wa maisha ya hawa watu wawili..............🌺"},
+ {t:"💌 Ukurasa 7",c:"🌺waliendelea katika kupendana ndipo siku moja ilikua huyo kijana akamwambia binti kua mungu amesema nami kua tusiendelee ila ilikua ni kwa muda frani wakatengane kwa muda wa kama wiki moja  hivi ila waliumia sana kwa kutengana kijana aliambiwa kua usije ukanitafuta ilikua kila akitaka kupiga sim au kumtafuta maneno yalimjia kua 'usinitafute na ufute namba yangu' ndipo siku moja rafiki yake na binti akapiga simu na kusema naomba mpigie rafiki yangu nataka kuongeanae ila simu yangu ina matatizo pia najaribu kumtafuta kwa SMS hajibu chochote baadaye akamuuliza kwani kuna nini kijana akamjibu kua ungemuuliza rafikiyako akakuambia mimi siwezi kukuambia chochote ndipo akauliza tena hivi kwa nini umemfanyia hivi rafiki yangu akasema muda ukifika tu  kila kitu kitakua sawa.....................🌺"},
+ {t:"✨ Ukurasa 8",c:"🌺ndipokijana baadaye akamtafuta binti ila akajibiwa kwa majibu ambayo yalionyesha kua amekasirikiwa sana pia kijana alikua amepata majibu ni kwanini mungu alimwambia watengane kwa muda alitaka waishi maisha ya kumtegemea Ndipo wakaendelea na maisha ya upendo ila kuna wakati hua unafika wanakorofishana na baadaye kusameheana na kuendelea pia hua binti anasema mimi na wewe basi ila baadae wana rudi kuendelea tena  katika kuelekea ndoa takatifu ambayo itampendeza Mungu na kujenga familia yenye Mungu na kuishi kwa upendo, mshikamano, heshima,nk...........🌺"},
+ {t:"💌 Ukurasa 9",c:"🌺 hiyo ni mafupi kati ya mengi juu ya Habari ya safari ya mtu mmoja Ahsante sana kwa kusoma Habari hii Mungu atuendeleze katika maisha mema ambayo ameyapanga juu yetu Vikwazo ni vingi ila tujitie nguvu na tuendelee mbele Mungu atatupa nguvu ya kuyashinda magumu yote tumtumaini Bwana kwa mambo yetu yote story hii Imeandaliwa na Marco samembe kwaajili yako mpedwa Mariam Fedrick . ahsante sana🌺"} 
+];
+
+let index=0;
+
+function showLock(){
+  intro.style.display="none";
+  lock.style.display="block";
+}
+function unlock(){
+  if(pass.value===PASSWORD){
+    lock.style.display="none";
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML='<div class="heart-text">Happy<br>Valentine<br>Mariam 💕</div>';
+    document.body.appendChild(heart);
+    heart.style.display="flex";
+    music.play();
+    heart.onclick=openBook;
+  }else alert("Password sio sahihi ❌");
+}
+function openBook(){
+  document.querySelector(".heart").style.display="none";
+  overlay.style.display="flex";
+  loadPage();
+}
+function closeBook(){
+  overlay.style.display="none";
+  document.querySelector(".heart").style.display="flex";
+}
+function loadPage(){
+  page.innerHTML=`<h2>${messages[index].t}</h2><p>${messages[index].c}</p>`;
+  page.scrollTop = 0; /* Hii inahakikisha page inarudi juu kila wakati */
+}
+function next(){if(index<messages.length-1){index++;loadPage();}}
+function prev(){if(index>0){index--;loadPage();}}
+</script>
+
+</body>
+</html>
