@@ -335,10 +335,13 @@ function unlock(){
   }else alert("Password sio sahihi ❌");
 }
 function openBook(){
-  document.querySelector(".heart").style.display="none";
+  music.currentTime = 0; // ← HUU NDO UMEONGEZWA
+  music.play();
+  heart.style.display="none";
   overlay.style.display="flex";
   loadPage();
 }
+
 function closeBook(){
   overlay.style.display="none";
   document.querySelector(".heart").style.display="flex";
@@ -353,5 +356,6 @@ function prev(){if(index>0){index--;loadPage();}}
 
 </body>
 </html>
+
 
 
