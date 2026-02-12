@@ -234,7 +234,7 @@ body{
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
- @media (max-width:700px){
+ @media (max-width:600px){
 
   html, body{
     width:100%;
@@ -257,7 +257,7 @@ body{
 <body>
 
 <audio id="music" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3">
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3">
 </audio>
 
 <div class="flower-ring" id="flowers"></div>
@@ -322,6 +322,7 @@ function showLock(){
   intro.style.display="none";
   lock.style.display="block";
 }
+
 function unlock(){
   if(pass.value===PASSWORD){
     lock.style.display="none";
@@ -334,26 +335,41 @@ function unlock(){
     heart.onclick=openBook;
   }else alert("Password sio sahihi ❌");
 }
-function openBook(){ document.querySelector(".heart").style.display="none"; overlay.style.display="flex"; loadPage(); }
+
+function openBook(){ 
+  document.querySelector(".heart").style.display="none"; 
+  overlay.style.display="flex"; 
+  music.play();   // Muziki unaanza tena ukibonyeza ua
+  loadPage(); 
+}
 
 function closeBook(){
   overlay.style.display="none";
   document.querySelector(".heart").style.display="flex";
+  music.pause();          // Hii inazima muziki
+  music.currentTime = 0;  // Inarudisha mwanzo (ukitaka uondoe mstari huu)
 }
+
 function loadPage(){
   page.innerHTML=`<h2>${messages[index].t}</h2><p>${messages[index].c}</p>`;
-  page.scrollTop = 0; /* Hii inahakikisha page inarudi juu kila wakati */
+  page.scrollTop = 0; 
 }
-function next(){if(index<messages.length-1){index++;loadPage();}}
-function prev(){if(index>0){index--;loadPage();}}
+
+function next(){
+  if(index<messages.length-1){
+    index++;
+    loadPage();
+  }
+}
+
+function prev(){
+  if(index>0){
+    index--;
+    loadPage();
+  }
+}
+
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
